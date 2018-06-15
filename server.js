@@ -14,6 +14,7 @@ mongoose.Promise = Promise;
 
 // Database configuration with mongoose
 let MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+mongoose.connect(MONGODB_URI);
 let db = mongoose.connection;
 
 // Usen body-parser with this app
