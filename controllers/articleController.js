@@ -9,14 +9,15 @@ const cheerio = require("cheerio");
 module.exports = {
     scrapeWebsite: (req, res, next) => {
         request({
-            url: "http://http://www.miamiherald.com/news/",}, (error, response, html) => {
+            url: "http://www.miamiherald.com/news/",}, (error, response, html) => {
 
             // Load the content for cheerio
             let $ = cheerio.load(html);
-            $("div.prem-hl-item").each(function(i, element) {
+            console.log(html);
+            $("div.h4.headline").each(function(i, element) {
 
                 const result = {};
-                result.title = $(this).children("h2.headline").text().trim();
+                result.title = $(this).children("h4.headline").text().trim();
                 result.summary = $(this).children("p.summary").text().trim();
                 result.link = 'http://www.miamiherald.com' + $(this).find("h2.headline a").attr("href");
 
@@ -33,7 +34,7 @@ module.exports = {
         });
 
 
-        res.redirect('back');
+        res.send('scrape complete');
     },
 
     renderHome: (req, res) => {
