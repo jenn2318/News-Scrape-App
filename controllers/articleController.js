@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Models = require('../models');
+const Models = require('../models/article');
 
 //Scraping tools
 const request = require("request");
@@ -37,6 +37,7 @@ module.exports = {
     },
 
     renderHome: (req, res) => {
+        console.log('renderHome');
         Models.Article.find({}, (error, article) => {
             error ? console.log(error) : res.render('../views/index', {article});
         });

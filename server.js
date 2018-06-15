@@ -23,8 +23,8 @@ app.use(express.static("public"));
 
 
 //Import the routes and let the server access them.
-let router = require('./controllers/articleController.js');
-//let routes = require('./controllers/commentController.js');
+//let router = require('/routes');
+let router = require('./routes/article-routes.js');
 app.use('/', router);
 
 // Show any mongoose errors
