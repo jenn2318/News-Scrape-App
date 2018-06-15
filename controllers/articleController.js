@@ -38,7 +38,7 @@ module.exports = {
 
     renderHome: (req, res) => {
         console.log('renderHome');
-        Models.Article.find({}, (error, article) => {
+        Models.find({}, (error, article) => {
             error ? console.log(error) : res.render('../views/index', {article});
         });
     },

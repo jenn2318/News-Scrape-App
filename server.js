@@ -9,7 +9,6 @@ const app = express();
 
 
 const PORT = process.env.PORT || 3000;
-// Set mongoose to leverage built in JavaScript ES6 Promises
 mongoose.Promise = Promise;
 
 // Database configuration with mongoose

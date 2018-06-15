@@ -24,7 +24,7 @@ router.get("/saved", (req, res) => {
 // To get an article by it's ObjectId
 router.get("/articles/:id", function(req, res) {
     // Here is the id passed in as an id parameter, this will make a query that finds the matching one in our db...
-    Models.Article.findOne({ "_id": req.params.id })
+    Models.findOne({ "_id": req.params.id })
     // populate all of the comments
         .populate("comment")
         // do the query
