@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Models = require('../models/article');
+const Models = require('../models');
 
 //Scraping tools
 const request = require("request");
@@ -14,22 +14,18 @@ module.exports = {
             // Load the content for cheerio
             let $ = cheerio.load(html);
             console.log(html);
-            $("div.h4.headline").each(function(i, element) {
+            $("div.teaser").each(function(i, element) {
 
                 const result = {};
                 result.title = $(this).children("h4.title").text().trim();
                 result.summary = $(this).children("p.summary").text().trim();
                 result.link = 'http://www.miamiherald.com' + $(this).find("h2.headline a").attr("href");
 
-
+                console.log(result);
                 // Using our article model this will create a new entry
                 // Here we pass the result object to the entry and the title and link
                 const entry = new Models.Article(result);
 
-                results.push({
-                    title: title,
-                    link: link
-                });
 
                 // Now, save that entry to the db
                 entry.save((err, doc) => {
@@ -49,7 +45,7 @@ module.exports = {
 
     renderHome: (req, res) => {
         console.log('renderHome');
-        Models.find({}, (error, article) => {
+        Models.Article.find({}, (error, article) => {
             error ? console.log(error) : res.render('../views/index', {article});
         });
     },
