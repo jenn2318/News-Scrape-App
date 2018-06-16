@@ -1,6 +1,6 @@
 # News-Scrape-App
 
-![home page](public/assets/images/news_scape_app.jpg)
+![home page](assets/images/news_scape_app.jpg)
 
 # Overview
 
