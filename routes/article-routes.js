@@ -1,3 +1,4 @@
+//Here are the routes
 const articleController = require('../controllers/articleController.js');
 const router = require('express').Router();
 

@@ -1,4 +1,4 @@
-//Schema
+//Schema for the comments
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
