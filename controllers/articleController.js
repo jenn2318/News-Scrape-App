@@ -45,6 +45,8 @@ module.exports = {
 
 
 //Here are the queries for the database to perform for the articles
+    //Render home page, saving th article and if the user chooses to not save or view saved
+
     renderHome: (req, res) => {
         console.log('renderHome');
         Models.find({}, (error, article) => {
