@@ -1,3 +1,6 @@
+
+<!--Handlebars to handle gathering the comments and displaying them on the page-->
+
 {{#each article}}
     <div class="col-md-12">
         <h2><a href="{{link}}" target="_blank">{{title}}</a></h2>
@@ -12,17 +15,17 @@
                                 <p>
                                     {{comment}}
                                 </p>
-                                <form action="/comment/remove-comment/{{_id}}" method="POST">
-                                    <input name="_id" value="{{_id}}" type="hidden"/>
-                                    <button type="submit" class="btn btn-default">Delete »</button>
+                                <form action="/comment/remove-comment/{{this.id}}" method="POST">
+                                    <input name="comment" value="{{this.id}}" type="text"/>
+                                    <button type="submit" class="btn btn-default">Delete</button>
                                 </form>
                             </div>
                         </div>
                     {{/each}}
                     <div class="col-sm-4 col-sm-offset-2">
-                        <form action="/comment/add-comment/{{_id}}" method="POST">
+                        <form action="/comment/add-comment/{{this.id}}" method="POST">
                             <input class="form-control" name="comment"/>
-                            <button type="submit" class="btn btn-default">Add Comment »</button>
+                            <button type="submit" class="btn btn-default">Add Comment</button>
                         </form>
                     </div>
                 </div>
@@ -31,10 +34,10 @@
 
         <div class="row">
             <form action="/unsave" method="POST">
-                <input name="_id" value="{{_id}}" type="hidden"/>
+                <input name="comment" value="{{comment}}" type="text"/>
                 <button type="submit" class="btn btn-default">Unsave »</button>
             </form>
-            <a class="btn btn-default" data-article="{{_id}}" target="_blank">View Comments »</a>
+            <a class="btn btn-default" data-article="{{this.id}}" target="_blank">View Comment</a>
         </div>
 
     </div>

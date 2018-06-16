@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 module.exports = mongoose.model(
     "Article",
     new Schema({
-        headline: {
+        title: {
             type: String,
             required: true
         },

@@ -1,11 +1,14 @@
+
+<!--Handlebars template to handle displaying the headline titles and summaries on the page-->
+
 {{#each article}}
     <div class="col-md-12">
-        <h2><a href="{{link}}" target="_blank">{{title}}</a></h2>
+        <h2><a href="{{link}}">{{title}}</a></h2>
         <p>{{summary}}</p>
         <p>
 
         <form action="/save" method="POST">
-            <input name="_id" value="{{_id}}" type="hidden"/>
+            <input name="headline" value="{{this.id}}" type="text"/>
             {{!--<input name="title" value="{{title}}" type="hidden"/>
             <input name="link" value="{{link}}" type="hidden"/>
             <input name="summary" value="{{summary}}" type="hidden"/>--}}

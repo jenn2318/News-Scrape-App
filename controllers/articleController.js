@@ -26,9 +26,14 @@ module.exports = {
                 // Here we pass the result object to the entry and the title and link
                 const entry = new Models.Article(result);
 
+                results.push({
+                    title: title,
+                    link: link
+                });
+
                 // Now, save that entry to the db
                 entry.save((err, doc) => {
-                    console.log(err ? err : doc);
+
                 });
             });
         });
@@ -37,6 +42,9 @@ module.exports = {
         res.send('scrape complete');
     },
 
+
+
+//Here are the queries for the database to perform for the articles
     renderHome: (req, res) => {
         console.log('renderHome');
         Models.find({}, (error, article) => {
@@ -45,21 +53,27 @@ module.exports = {
     },
 
     saveArticle: (req, res) => {
-        Models.Article.findOneAndUpdate({"_id": (req.body._id)}, {saved: true},
+        Models.Article.findOne()({"_id": (req.body._id)}, {saved: true},
             (error) => {
-                error ? console.log(error) : res.redirect('back');
+                error ? console.log(error) : res.send('back');
             });
     },
 
-    unsaveArticle: (req, res) => {
-        Models.Article.findOneAndUpdate({"_id": (req.body._id)}, {saved: false},
+    saveArticle: (req, res) => {
+        Models.Article.updateOne()({"_id": (req.body._id)}, {saved: true},
             (error) => {
-                error ? console.log(error) : res.redirect('back');
+                error ? console.log(error) : res.send('back');
+            });
+    },
+    unsaveArticle: (req, res) => {
+        Models.Article.findOne()({"_id": (req.body._id)}, {saved: false},
+            (error) => {
+                error ? console.log(error) : res.send('back');
             });
     },
 
     viewSaved:  (req, res) => {
-        Models.Article.find({saved: true}).sort({updatedAt: -1}).populate("comment").exec((error, article) => {
+        Models.Article.find()({saved: true}).sort({updatedAt: -1}).populate("comment").exec((error, article) => {
             error ? console.log(error) : res.render('../views/saved', {article})
         });
     },
