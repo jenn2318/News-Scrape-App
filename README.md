@@ -1,5 +1,7 @@
 # News-Scrape-App
 
+![home page](public/assets/images/news_scrape_app.jpg)
+
 # Overview
 
 This app will let users view and leave comments on the latest news using Cheerio. And the news articles will be stored using Mongodb and Mongoose for schema setup.
