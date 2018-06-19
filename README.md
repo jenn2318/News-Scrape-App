@@ -5,6 +5,12 @@ This app will let users view and leave comments on the latest news using Cheerio
 
 ![home page](public/assets/images/news_scraper2.jpg)
 
+## Tech stack used
+Cheerio
+Mongodb
+Express.js
+Handlebars
+
 ## Instructions
 
 Create an app that accomplishes the following:
